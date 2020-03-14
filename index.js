@@ -2,6 +2,8 @@
 
 // console.log(process);
 
+"use strict";
+
 var playerAction = process.argv[process.argv.length - 1];
 
 var random = Math.random() * 3;
