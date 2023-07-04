@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/DonaldY/node.js-practice#readme",
   "dependencies": {
+    "axios": "^1.4.0",
+    "cheerio": "^1.0.0-rc.12",
     "express": "^4.17.1",
     "glob": "^7.1.6",
     "koa": "^2.11.0",
