@@ -1,16 +1,37 @@
 const fs = require('fs');
+const axios = require('axios');
+const cheerio = require('cheerio');
 
-const parentFolderPath = '/Users/yangyf/Documents';
-const folderNames = ['folder1', 'folder2', 'folder3'];
+const SAVE_FOLDER_PATH = '/Users/yangyf/Downloads';
+const INDEX_NAME = "INDEX";
+const PAGE_INDEX = "http://www.customs.gov.cn/customs/302249/zfxxgk/2799825/302274/302277/4899681/index.html";
 
-folderNames.forEach((folderName) => {
-    const folderPath = `${parentFolderPath}/${folderName}`;
+function runMain() {
+    console.log("begin...");
 
-    fs.mkdir(folderPath, { recursive: true }, (err) => {
-        if (err) {
-            console.error(`创建文件夹 ${folderPath} 时遇到错误：${err}`);
-        } else {
-            console.log(`文件夹 ${folderPath} 创建成功！`);
-        }
-    });
-});
+    let yearPageList = getYearPageList(INDEX_NAME, PAGE_INDEX);
+
+    console.log("end...");
+}
+
+function getYearPageList(name, pageUrl) {
+    const HTML = catchPageHTML(name, pageUrl) || '';
+    if (!HTML) {
+
+        return;
+    }
+    const $ = cheerio.load(HTML);
+
+}
+
+async function catchPageHTML(name, pageUrl) {
+    try {
+        const response = await axios.get(pageUrl);
+
+        return response.data;
+    } catch (error) {
+        console.error(`ERROR: ${name} , msg：${error.message}`);
+
+        return "";
+    }
+}

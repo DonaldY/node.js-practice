@@ -1,23 +1,16 @@
 const fs = require('fs');
-const axios = require('axios');
-const cheerio = require('cheerio');
 
-const SAVE_FOLDER_PATH = '/Users/yangyf/Downloads';
-const PAGE_INDEX = "http://www.customs.gov.cn/customs/302249/zfxxgk/2799825/302274/302277/4899681/index.html";
+const parentFolderPath = '/Users/yangyf/Documents';
+const folderNames = ['folder1', 'folder2', 'folder3'];
 
-function runMain() {
-    console.log("begin...");
+folderNames.forEach((folderName) => {
+    const folderPath = `${parentFolderPath}/${folderName}`;
 
-
-
-    console.log("end...");
-}
-
-async function get() {
-    try {
-        const response = await axios.get(PAGE_INDEX);
-        const data = response.data;
-    } catch (error) {
-        console.error(`抓取页面时遇到错误：${error.message}`);
-    }
-}
+    fs.mkdir(folderPath, { recursive: true }, (err) => {
+        if (err) {
+            console.error(`创建文件夹 ${folderPath} 时遇到错误：${err}`);
+        } else {
+            console.log(`文件夹 ${folderPath} 创建成功！`);
+        }
+    });
+});
