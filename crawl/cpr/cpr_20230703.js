@@ -61,7 +61,7 @@ async function execute() {
 async function getYearPageList() {
     //await driver.get(INDEX, 5000);
     await driver.get(PAGE_INDEX);
-    await driver.wait(until.stalenessOf(driver.findElement(By.tagName('html'))), 10000);
+    //await driver.wait(until.stalenessOf(driver.findElement(By.tagName('html'))), 10000);
 
     let pageObjList = await driver.findElements(By.xpath('//*[@id="22b0be14d9504a8cbbf866f5e550a591"]/div[2]/div/a'));
     let pageList = [];
