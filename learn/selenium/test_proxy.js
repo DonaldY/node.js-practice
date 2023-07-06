@@ -13,7 +13,7 @@ async function example() {
         .build();
     try {
         // 导航到指定URL
-        await driver.get('https://www.baidu.com');
+        await driver.get('https://bot.sannysoft.com/');
 
         await sleep(10000);
     } finally {
