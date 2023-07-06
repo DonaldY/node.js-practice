@@ -1,10 +1,14 @@
-const { Builder, By, Key, until } = require('selenium-webdriver');
+const { Builder} = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
 
 async function example() {
     const options = new chrome.Options();
-    options.addArguments('--remote-debugging-port=9222'); // 设置远程调试端口
-    let driver = await new Builder().forBrowser('chrome')
+    // 设置远程 Chrome 实例的地址和端口号
+    options.addArguments(`--remote-debugging-address=127.0.0.1`);
+    options.addArguments(`--remote-debugging-port=9222`);
+    options.addArguments(`--headless`);  //
+    let driver = await new Builder()
+        .forBrowser('chrome')
         .setChromeOptions(options)
         .build();
     try {
