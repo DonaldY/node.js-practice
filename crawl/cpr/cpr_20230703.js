@@ -1,6 +1,7 @@
 const fs = require('fs');
 const axios = require('axios');
 const cheerio = require('cheerio');
+const { Builder, By, Key, until } = require('selenium-webdriver');
 
 const SAVE_FOLDER_PATH = '/Users/yangyf/Downloads';
 const INDEX_NAME = "INDEX";
