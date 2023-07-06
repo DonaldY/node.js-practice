@@ -1,18 +1,45 @@
+const http = require('http');
 const fs = require('fs');
+const path = require('path');
 const axios = require('axios');
 const cheerio = require('cheerio');
 const { Builder, By, Key, until } = require('selenium-webdriver');
+const chrome = require('selenium-webdriver/chrome');
 
-const SAVE_FOLDER_PATH = '/Users/yangyf/Downloads';
+const SAVE_FOLDER_PATH = '/Users/yangyf/Downloads/CPR';
 const INDEX_NAME = "INDEX";
 const PAGE_INDEX = "http://www.customs.gov.cn/customs/302249/zfxxgk/2799825/302274/302277/4899681/index.html";
+const INDEX = "http://www.customs.gov.cn/";
 const DOMAIN = "http://www.customs.gov.cn/";
+let driver;
 
+async function main() {
+    const options = new chrome.Options();
+    // 设置远程 Chrome 实例的地址和端口号
+    options.addArguments(`--remote-debugging-address=127.0.0.1`);
+    options.addArguments(`--remote-debugging-port=9222`);
+    options.addArguments(`--headless`);  //
+    driver = await new Builder()
+        .forBrowser('chrome')
+        .setChromeOptions(options)
+        .build();
+    try {
+        await execute();
 
-function runMain() {
+        await sleep(10000);
+    } finally {
+        await driver.quit(); // 关闭WebDriver会话
+    }
+}
+
+function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function execute() {
     console.log("begin...");
 
-    let yearPageList = getYearPageList(INDEX_NAME, PAGE_INDEX);
+    let yearPageList = await getYearPageList();
     console.log(yearPageList);
     // for (let i = 0; i < yearPageList.length; ++i) {
     //     let yearPage = yearPageList[i];
@@ -31,33 +58,45 @@ function runMain() {
     console.log("end...");
 }
 
-function getYearPageList(name, pageUrl) {
-    const HTML = catchPageHTML(name, pageUrl);
-    let $ = cheerio.load(HTML);
-    let pageListObj = $('#\\32 2b0be14d9504a8cbbf866f5e550a591 > div:nth-child(2) > div > a');
-    let pageList = [];
-    for (let i = 0; i < pageListObj.length; ++i) {
-        let pageObj = pageListObj[i];
+async function getYearPageList() {
+    //await driver.get(INDEX, 5000);
+    await driver.get(PAGE_INDEX);
+    await driver.wait(until.stalenessOf(driver.findElement(By.tagName('html'))), 10000);
 
+    let pageObjList = await driver.findElements(By.xpath('//*[@id="22b0be14d9504a8cbbf866f5e550a591"]/div[2]/div/a'));
+    let pageList = [];
+    for (let pageObj of pageObjList) {
         let page = {};
-        page.year = $(pageObj).text().trim();
-        page.url = DOMAIN + pageObj.href;
+        const text = await pageObj.getText();
+        const href = await pageObj.getAttribute('href');
+        page.year = text;
+        page.url = DOMAIN + href;
         pageList.push(page);
     }
 
     return pageList;
 }
 
-async function catchPageHTML(name, pageUrl) {
-    try {
-        const response = await axios.get(pageUrl);
+function downLoadFile(fileUrl, destinationFolder) {
+    // 从 URL 中提取文件名
+    const fileName = path.basename(fileUrl);
 
-        return response.data;
-    } catch (error) {
-        console.error(`ERROR: ${name} , msg：${error.message}`);
+    // 创建写入流
+    const file = fs.createWriteStream(path.join(destinationFolder, fileName));
 
-        return "";
-    }
+    // 发起 HTTP GET 请求
+    http.get(fileUrl, (response) => {
+        response.pipe(file);
+
+        file.on('finish', () => {
+            file.close();
+            console.log('文件下载完成！');
+        });
+    }).on('error', (err) => {
+        // 删除已下载的文件
+        fs.unlinkSync(path.join(destinationFolder, fileName));
+        console.error(`下载文件时遇到错误：${err.message}`);
+    });
 }
 
-runMain();
+main();
