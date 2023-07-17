@@ -8,7 +8,7 @@ const XLS_DOMAIN = "http://www.customs.gov.cn";
 
 async function main() {
     await doMain();
-    sleep(10000);
+    sleep(100000);
 }
 
 async function doMain() {
@@ -16,6 +16,7 @@ async function doMain() {
     for (let yearXls of yearXlsList) {
         let year = yearXls.year;
         let xlsList = yearXls.list;
+        console.log(year + ' 数据列表长度：' + xlsList.length);
 
         const folderPath = `${FOLDER_PATH}/${year}`;
 
@@ -57,7 +58,7 @@ async function downLoadFile(fileUrl, destinationFolder) {
             'Pragma': ' no-cache',
             'User-Agent': ' Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
             'Upgrade-Insecure-Requests': ' 1',
-            'Cookie': '__jsl_clearance=1689061786.675|0|iYzJSVn2ak0dVqF8ZehxFkbnntM%3D;AV7KYchI7HHaS=5iHB65GGp9L8pGLc6yJPeFwgDCEs.nnuczitA9_cQsQxmJJ84fUEFnKm2FI9fAOmqwz.3tGd430leVi57vUxafA;__jsluid_h=828edbe801414e870307229b08c486bb; __jsluid_h=6d190d84d3bfe5c5740e0affd53613f6'
+            'Cookie': '__jsluid_h=940adf28c45c5d5ba1579464cfed5333; AV7KYchI7HHaS=5bg1vCFS5WfLjd8rzBn6iIH1t6OXQSyWOGOkfFOQdRtxW6UDTjKqnYl_7Tkh52zwsCOfrdzsg.LOxKkUdxbtIVA; _gscu_1524496263=87326908zni1lx10; __jsl_clearance=1689523311.25|0|5NIM6TbI9cQhFHJu4E0Z1owq93g%3D; EPORTALJSESSIONID=CAhfb966BaPeWz4d2Z7H0g-SoyV6lpGp65UHg4RWd66ihFs4Dehr\u00211029704743; _gscbrs_1524496263=1; _gsref_1524496263=http://www.customs.gov.cn/customs/302249/zfxxgk/2799825/302274/302277/4185050/index.html; _gscs_1524496263=895234536rjrpl19|pv:3; AV7KYchI7HHaT=utuinjxTw5l6tfPucot4i.U2ggLFbez.aalTEdkDq5Gk30DdWNmFFUy7AKICMlK3GomXXJe7qq9n2VJdlg2kVZMqLpYrIo70dmk9sBjO1sE5wYOjC6fXJ_x98jETYKzaQQhpr0RslZKPDB43oQmNJ_43BIZo4loelwaXM5bKxS_fclgRFeHCRPJdVx3a6bVcR2m4L8kzcyocPdchgwUnX8cC.eEIJ6pF_i0odJWqcLIERzFGn07F9LivweCZG9h1JvQMA3nv2ahm6zhMEQxLgj4M6PwdaqG04YAoHZs0lDCKrAWWbnDt5VHojV7JIXHrq8puKISVjA4YZZZxuVVB.kqxjMAZGBIXBNAgYdVXH9FqiVKWVu9SKpKD59nU04JAZ3N3WXIpGZs0P1IfHh0WFq'
         }
     };
 
