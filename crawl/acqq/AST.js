@@ -1,3 +1,4 @@
+const fs = require("fs");//文件读写
 const parse = require("@babel/parser"); //解析为ast
 const traverse = require('@babel/traverse').default;//遍历节点
 const types = require('@babel/types');//类型
