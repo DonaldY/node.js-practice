@@ -53,16 +53,15 @@ async function downLoadFile(fileUrl, destinationFolder) {
         hostname: 'www.customs.gov.cn',
         path: fileUrl,
         method: 'GET',
-        'headers': {
-            'Accept': ' text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-            'Accept-Language': ' zh-CN,zh;q=0.9,en;q=0.8',
-            'Cache-Control': ' no-cache',
-            'Connection': ' keep-alive',
-            'Host': ' www.customs.gov.cn',
-            'Pragma': ' no-cache',
-            'User-Agent': ' Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
-            'Upgrade-Insecure-Requests': ' 1',
-            'Cookie': '__jsluid_h=940adf28c45c5d5ba1579464cfed5333; AV7KYchI7HHaS=5bg1vCFS5WfLjd8rzBn6iIH1t6OXQSyWOGOkfFOQdRtxW6UDTjKqnYl_7Tkh52zwsCOfrdzsg.LOxKkUdxbtIVA; _gscu_1524496263=87326908zni1lx10; __jsl_clearance=1689523311.25|0|5NIM6TbI9cQhFHJu4E0Z1owq93g%3D; EPORTALJSESSIONID=CAhfb966BaPeWz4d2Z7H0g-SoyV6lpGp65UHg4RWd66ihFs4Dehr\u00211029704743; _gscbrs_1524496263=1; _gsref_1524496263=http://www.customs.gov.cn/customs/302249/zfxxgk/2799825/302274/302277/4185050/index.html; _gscs_1524496263=895234536rjrpl19|pv:3; AV7KYchI7HHaT=utuinjxTw5l6tfPucot4i.U2ggLFbez.aalTEdkDq5Gk30DdWNmFFUy7AKICMlK3GomXXJe7qq9n2VJdlg2kVZMqLpYrIo70dmk9sBjO1sE5wYOjC6fXJ_x98jETYKzaQQhpr0RslZKPDB43oQmNJ_43BIZo4loelwaXM5bKxS_fclgRFeHCRPJdVx3a6bVcR2m4L8kzcyocPdchgwUnX8cC.eEIJ6pF_i0odJWqcLIERzFGn07F9LivweCZG9h1JvQMA3nv2ahm6zhMEQxLgj4M6PwdaqG04YAoHZs0lDCKrAWWbnDt5VHojV7JIXHrq8puKISVjA4YZZZxuVVB.kqxjMAZGBIXBNAgYdVXH9FqiVKWVu9SKpKD59nU04JAZ3N3WXIpGZs0P1IfHh0WFq'
+        "headers": {
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+            "accept-language": "zh-CN,zh;q=0.9",
+            "cache-control": "no-cache",
+            "pragma": "no-cache",
+            "upgrade-insecure-requests": "1",
+            "cookie": "__jsluid_h=4ea0888207d248cdded5e15a6d3e948c; AV7KYchI7HHaS=5vSS23w2EY0KcQiSGsc9cSOUcNav7GU6TABi0hEf4nqcJWWxLhaEE_iloIX8Mkxsydb6EvDYVTcqH3tmfxy4WAq; _gscu_1524496263=88991451i43clr19; AV7KYchI7HHaT=rKsZBYseMUzm0raLXQBNVIBE4.jrOfY.mUoICmX4FUNpGwBi7uAPTrC8KlWY_fPlXpgMSW9cgZQxu4QJ29R1EBMF6Uhn04RiuyB3R3YbT1WDbzEi.fNlHiMQO3mmYc34iWeoBPyPOgV8BmMTMP.sLRZOUMf0zosqjlS9gLpogjetue43A_rJneymsZApIRvOPA67nWdVperobEe8jMSlvQDtcmrcJiB7wSly8BaLiImxmrFT1mr_iHZ1VeddA0Vqu.kbSvCjexjAYZQFJf34AiOMpTOzs38m8tmPVI2oYGRXXFEKAD9dSQhLgpvlE_kA60JwvXzouuM6J3Xza.8ADaDKNKjO85x6ruIt4Z0XLq0; __jsl_clearance=1692346851.47|0|5om3cp7J%2FomqQJcnF%2BhG%2BPSwNJQ%3D",
+            //"Referer": "http://www.customs.gov.cn/customs/302249/zfxxgk/2799825/302274/302277/302276/4245830/2022031814252873524.xls",
+            "Referrer-Policy": "strict-origin-when-cross-origin"
         }
     };
 
