@@ -101,7 +101,7 @@ async function downLoadFile(fileUrl, destinationFolder) {
             'Pragma': ' no-cache',
             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36',
             'Upgrade-Insecure-Requests': '1',
-            'Cookie': '__jsluid_h=456735be2d59c0d04e1f75e1b2ed67ac;__jsl_clearance=1717398527.897|0|9LRwSQdf4wZ49qWpUWmh%2Fw3AQjI%3D'
+            'Cookie': '__jsluid_h=456735be2d59c0d04e1f75e1b2ed67ac;__jsl_clearance=1717398527.897|0|9LRwSQdf4wZ49qWpUWmh%2Fw3AQjI%3D;'
         }
     };
 
